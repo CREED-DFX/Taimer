@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Таймер</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="app">
+  <header>
+    <h1>Таймер</h1>
+    <p class="subtitle">Інтервальний таймер — підходи, робота та відпочинок</p>
+  </header>
+
+  <section class="controls card">
+    <label>Підходи</label>
+    <div class="row number-row">
+      <button id="sets-decrease" class="btn small">−</button>
+      <div id="sets" class="big-number">3</div>
+      <button id="sets-increase" class="btn small">+</button>
+    </div>
+
+    <label>Робота (мм:сс)</label>
+    <div class="row time-row">
+      <div class="time-input">
+        <input id="work-min" type="number" min="0" max="59" value="0" /> :
+        <input id="work-sec" type="number" min="0" max="59" value="30" />
+      </div>
+      <div class="plusminus">
+        <button data-target="work" class="btn small add">+</button>
+        <button data-target="work" class="btn small sub">−</button>
+      </div>
+    </div>
+
+    <label>Відпочинок (мм:сс)</label>
+    <div class="row time-row">
+      <div class="time-input">
+        <input id="rest-min" type="number" min="0" max="59" value="0" /> :
+        <input id="rest-sec" type="number" min="0" max="59" value="15" />
+      </div>
+      <div class="plusminus">
+        <button data-target="rest" class="btn small add">+</button>
+        <button data-target="rest" class="btn small sub">−</button>
+      </div>
+    </div>
+
+    <label class="switch-row"><input id="skip-last-rest" type="checkbox" /> Пропускати останній відпочинок</label>
+
+    <div class="actions">
+      <button id="start" class="btn primary">Розпочати</button>
+      <button id="pause" class="btn" disabled>Пауза</button>
+      <button id="reset" class="btn" disabled>Скинути</button>
+    </div>
+  </section>
+
+  <section class="display card">
+    <div class="status" id="status">Готово</div>
+    <div class="timer" id="timer">00:00</div>
+    <div class="progress-row">
+      <div class="label">Підхід <span id="current-set">0</span> / <span id="total-sets">0</span></div>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+    </div>
+  </section>
+
+  <footer class="card small">
+    <small>Збереження налаштувань в локальному сховищі. PWA-ready (manifest + service worker).</small>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
